@@ -1,0 +1,28 @@
+{
+    "name": "@za/common-web-monitor",
+    "version": "1.0.1",
+    "description": "Web前端监控",
+    "main": "libs/index.esm.min.js",
+    "scripts": {
+        "dev": "za-dev-utils",
+        "prod": "za-prod-utils",
+        "terser": "terser libs/index.umd.min.js -o libs/web-monitor.min.js -c"
+    },
+    "files": [
+        "libs",
+        "src",
+        "types",
+        "package.json",
+        "readme.md"
+    ],
+    "types": "types/index.d.ts",
+    "author": "chenjianfang",
+    "license": "MIT",
+    "devDependencies": {
+        "@za-build/utils": "^0.0.1"
+    },
+    "dependencies": {
+        "core-js": "^3.7.0",
+        "regenerator-runtime": "^0.13.7"
+    }
+}
