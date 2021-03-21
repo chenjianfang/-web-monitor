@@ -18,7 +18,7 @@ export const listening = (callback: () => void) => {
 // load最大等待10秒
 const maxLoadDelay = 10000;
 const maxLoad = () => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
         setTimeout(() => {
             resolve();
         }, maxLoadDelay);
@@ -26,7 +26,7 @@ const maxLoad = () => {
 };
 
 export const domLoad = () => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
         if (document.readyState === 'complete') {
             resolve();
         } else {
