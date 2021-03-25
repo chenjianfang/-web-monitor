@@ -1,7 +1,7 @@
 ## Introduction
 珍爱Web前端监控
 
-[更新日志](http://gitlab.zhenai.com/webapp/common/module/web_monitor/blob/master/CHANGELOG.md)
+[更新日志](https://github.com/chenjianfang/-web-monitor/blob/master/CHANGELOG.md)
 ## Installation
 ##### 1、Web
 ```

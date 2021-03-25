@@ -1,5 +1,5 @@
 {
-    "name": "@za/common-web-monitor",
+    "name": "@web/monitor",
     "version": "1.0.1",
     "description": "Web前端监控",
     "main": "libs/index.esm.min.js",
