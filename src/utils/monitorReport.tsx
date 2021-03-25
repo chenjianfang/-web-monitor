@@ -19,7 +19,7 @@ export const monitorReport = function (data: QmsReportInterface) {
         send.onload = send.onerror = () => {
             send = null;
         };
-        send.src = `${window.location.protocol}//${hostName}/monitor/collect.do?${paramStr(data)}`;
+        send.src = `${window.location.protocol}//${hostName}/monitor/collect?${paramStr(data)}`;
     }
 };
 
