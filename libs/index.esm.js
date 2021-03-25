@@ -2734,7 +2734,7 @@ var monitorReport = function monitorReport(data) {
       send = null;
     };
 
-    send.src = "".concat(window.location.protocol, "//").concat(hostName, "/monitor/collect.do?").concat(paramStr(data));
+    send.src = "".concat(window.location.protocol, "//").concat(hostName, "/monitor/collect?").concat(paramStr(data));
   }
 }; // 上报数据缓存
 

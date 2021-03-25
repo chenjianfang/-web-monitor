@@ -2737,7 +2737,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         send = null;
       };
 
-      send.src = "".concat(window.location.protocol, "//").concat(hostName, "/monitor/collect.do?").concat(paramStr(data));
+      send.src = "".concat(window.location.protocol, "//").concat(hostName, "/monitor/collect?").concat(paramStr(data));
     }
   }; // 上报数据缓存
 
