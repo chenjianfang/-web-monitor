@@ -19,11 +19,13 @@ export interface QmsReportInterface {
     r: number
     ct: number
     s: string
+    appkey: string
 }
 
 export interface SetMonitorOptionInterface {
+    bt: string // bt
+    appkey: string // key
     open?: boolean // 是否监听
-    bt?: string // bt
     [propName: string]: any; // 任何data数据
 }
 

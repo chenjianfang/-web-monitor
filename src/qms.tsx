@@ -20,6 +20,7 @@ export default function qms({
         const {
             open: customOpen,
             bt: customBT,
+            appkey,
             data: customData
         } = customOption;
 
@@ -44,6 +45,7 @@ export default function qms({
                 ct: time,
                 // 来源
                 s: source, //信息来源（每条记录自带），如：页面referer、客户端界面路径、服务端文件路径等
+                appkey,
             };
 
             if (customOpen === -1) {

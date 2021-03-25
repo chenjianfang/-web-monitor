@@ -2,13 +2,13 @@ import {loadInterceptor, paramStr} from "./index";
 
 import { QmsReportInterface, SetMonitorOptionInterface } from '../../types';
 
-let businessType = 'company'; // 业务类型
 let hostName = 'localhost:8080'; // 上报接口host
 
 // 设置自定义配置
 export const customOption = {
     open: -1, // -1 未初始化；0 关；1 开
-    bt: businessType,
+    bt: '',
+    appkey: '',
     data: {}
 };
 
@@ -33,6 +33,7 @@ export const cacheReport = {
         this.cache.forEach((data: QmsReportInterface) => {
             monitorReport(data);
         });
+        this.cache = [];
     }
 };
 
@@ -42,9 +43,10 @@ export const cacheReport = {
  */
 export function setMonitorOption(option: SetMonitorOptionInterface) {
     if (option) {
-        const { open = true, bt = businessType, ...args } = option;
+        const { open = true, bt = '', appkey = '', ...args } = option;
         customOption.open = open ? 1 : 0;
         customOption.bt = bt;
+        customOption.appkey = appkey;
         customOption.data = {
             ...customOption.data,
             ...args

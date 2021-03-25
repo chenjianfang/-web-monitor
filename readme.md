@@ -108,8 +108,9 @@ options参数：
 ```
 window.setMonitorOption(options);
 options参数：
+    bt: string // 业务类型
+    appkey: string // key
     open?: boolean // 是否监听
-    bt?: string // bt
     [propName: string]: any; // 任何data数据
 ```
 
