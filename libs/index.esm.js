@@ -2715,14 +2715,13 @@ function __awaiter(thisArg, _arguments, P, generator) {
   });
 }
 
-var businessType = 'company'; // 业务类型
-
 var hostName = 'localhost:8080'; // 上报接口host
 // 设置自定义配置
 
 var customOption = {
   open: -1,
-  bt: businessType,
+  bt: '',
+  appkey: '',
   data: {}
 }; // 上报
 
@@ -2748,6 +2747,7 @@ var cacheReport = {
     this.cache.forEach(function (data) {
       monitorReport(data);
     });
+    this.cache = [];
   }
 };
 /**
@@ -2760,11 +2760,14 @@ function setMonitorOption(option) {
     var _option$open = option.open,
         open = _option$open === void 0 ? true : _option$open,
         _option$bt = option.bt,
-        bt = _option$bt === void 0 ? businessType : _option$bt,
-        args = __rest(option, ["open", "bt"]);
+        bt = _option$bt === void 0 ? '' : _option$bt,
+        _option$appkey = option.appkey,
+        appkey = _option$appkey === void 0 ? '' : _option$appkey,
+        args = __rest(option, ["open", "bt", "appkey"]);
 
     customOption.open = open ? 1 : 0;
     customOption.bt = bt;
+    customOption.appkey = appkey;
     customOption.data = Object.assign(Object.assign({}, customOption.data), args);
     cacheReport.report();
   }
@@ -2811,6 +2814,7 @@ function qms(_ref) {
 
     var customOpen = customOption.open,
         customBT = customOption.bt,
+        appkey = customOption.appkey,
         customData = customOption.data;
 
     if (Math.random() < 1 / rate) {
@@ -2830,8 +2834,8 @@ function qms(_ref) {
         // 当前时间
         ct: time,
         // 来源
-        s: source //信息来源（每条记录自带），如：页面referer、客户端界面路径、服务端文件路径等
-
+        s: source,
+        appkey: appkey
       };
 
       if (customOpen === -1) {

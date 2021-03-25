@@ -1,7 +1,7 @@
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 (function (global, factory) {
-  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global['web-monitor'] = factory());
+  (typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global['client-monitor'] = factory());
 })(this, function () {
   'use strict';
 
@@ -2718,14 +2718,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     });
   }
 
-  var businessType = 'company'; // 业务类型
-
   var hostName = 'localhost:8080'; // 上报接口host
   // 设置自定义配置
 
   var customOption = {
     open: -1,
-    bt: businessType,
+    bt: '',
+    appkey: '',
     data: {}
   }; // 上报
 
@@ -2751,6 +2750,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       this.cache.forEach(function (data) {
         monitorReport(data);
       });
+      this.cache = [];
     }
   };
   /**
@@ -2763,11 +2763,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var _option$open = option.open,
           open = _option$open === void 0 ? true : _option$open,
           _option$bt = option.bt,
-          bt = _option$bt === void 0 ? businessType : _option$bt,
-          args = __rest(option, ["open", "bt"]);
+          bt = _option$bt === void 0 ? '' : _option$bt,
+          _option$appkey = option.appkey,
+          appkey = _option$appkey === void 0 ? '' : _option$appkey,
+          args = __rest(option, ["open", "bt", "appkey"]);
 
       customOption.open = open ? 1 : 0;
       customOption.bt = bt;
+      customOption.appkey = appkey;
       customOption.data = Object.assign(Object.assign({}, customOption.data), args);
       cacheReport.report();
     }
@@ -2814,6 +2817,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       var customOpen = customOption.open,
           customBT = customOption.bt,
+          appkey = customOption.appkey,
           customData = customOption.data;
 
       if (Math.random() < 1 / rate) {
@@ -2833,8 +2837,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           // 当前时间
           ct: time,
           // 来源
-          s: source //信息来源（每条记录自带），如：页面referer、客户端界面路径、服务端文件路径等
-
+          s: source,
+          appkey: appkey
         };
 
         if (customOpen === -1) {
